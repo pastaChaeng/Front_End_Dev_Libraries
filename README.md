@@ -1,4 +1,4 @@
-# Front End Development Libraries CC (React)
+# Quote Generator (React)
 This is a web application that displays random quotes to inspire and motivate users. Users can view a new quote with the click of a button and even share it on Twitter.
 Hi there swifties~
 
