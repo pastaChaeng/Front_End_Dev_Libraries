@@ -1,6 +1,6 @@
-# Quote Generator (React)
+# Quote Generator
 This is a web application that displays random quotes to inspire and motivate users. Users can view a new quote with the click of a button and even share it on Twitter.
-Hi there swifties~
+
 
 # Technologies Used
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=flat&logo=html5&logoColor=white)
