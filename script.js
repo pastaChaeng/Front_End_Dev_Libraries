@@ -25,23 +25,29 @@ function App(){
             <div className="jumbotron">
                 <div className="card">
                     <div className="card-header">Inspirational Quotes</div>
-                    <div className="card-body">
-                        {randomQuote ? (
-                            <>
-                                <h5 className="card-title">- {randomQuote.author || "NO author"}</h5>
-                                <p className="card-text">&quot;{randomQuote.text}&quot;</p>
-                            </>
-                        ) : (
-                            <h2>Loading</h2>
-                        )}
-                        <div className="row">
-                            <button className="btn btn-primary ml-3" onClick={getNewQuote}>New Quote</button>
-                            <a href={`https://twitter.com/intent/tweet?text=${randomQuote.text}`} className="btn btn-warning">
-                                <i className="fa fa-twitter"> </i>
-                            </a>
-                            <a href="" className="btn btn-danger"></a>
-                        </div>
-                    </div>
+                    <div className="card-body d-flex flex-row justify-content-between align-items-center">
+  {randomQuote ? (
+    <>
+      <div>
+        <h5 className="card-title">- {randomQuote.author || "NO author"}</h5>
+        <p className="card-text">&quot;{randomQuote.text}&quot;</p>
+      </div>
+    </>
+  ) : (
+    <h2>Loading</h2>
+  )}
+  <div>
+    <button className="btn btn-primary mr-3" onClick={getNewQuote}>New Quote</button>
+    <a
+      href={`https://twitter.com/intent/tweet?text=${randomQuote.text}`}
+      className="btn btn-warning"
+    >
+      <i className="fa fa-twitter"> </i>
+    </a>
+    <a href="" className="btn btn-danger"></a>
+  </div>
+</div>
+
                 </div>
             </div>
         </div>
