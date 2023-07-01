@@ -2,6 +2,7 @@ function App() {
   const [quotes, setQuotes] = React.useState([]);
   const [randomQuote, setRandomQuote] = React.useState("");
   const [copiedQuote, setCopiedQuote] = React.useState("");
+  const [isDarkMode, setIsDarkMode] = React.useState(true);
 
   React.useEffect(() => {
     async function fetchData() {
@@ -22,8 +23,9 @@ function App() {
   };
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(randomQuote.text);
-    setCopiedQuote(randomQuote.text);
+    const quoteWithAuthor = `- ${randomQuote.author || "Unknown Author"}: ${randomQuote.text}`;
+    navigator.clipboard.writeText(quoteWithAuthor);
+    setCopiedQuote("Copied!");
   };
 
   const handleFbTimelineShare = () => {
@@ -34,16 +36,25 @@ function App() {
     window.open(fbUrl, "_blank");
   };
 
+  const handleModeToggle = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
   return (
-    <div className="container pt-5">
+    <div className={`container pt-5 ${isDarkMode ? "dark-mode" : "light-mode"}`}>
+      <div className="toggle-button" onClick={handleModeToggle}>
+        <i className={`fas ${isDarkMode ? "fa-sun" : "fa-moon"}`}></i>
+      </div>
       <div className="jumbotron">
         <div className="card">
-          <div className="card-header bg-dark text-white">Inspirational Quotes</div>
+          <div className={`card-header ${isDarkMode ? "bg-dark text-white" : "bg-light"}`}>
+            Inspirational Quotes
+          </div>
           <div className="card-body d-flex flex-row justify-content-between align-items-center">
             {randomQuote ? (
               <>
                 <div>
-                  <h5 className="card-title">- {randomQuote.author || "NO author"}</h5>
+                  <h5 className="card-title">- {randomQuote.author || "Unknown Author"}</h5>
                   <p className="card-text">&quot;{randomQuote.text}&quot;</p>
                 </div>
               </>
@@ -72,7 +83,7 @@ function App() {
               </div>
               <div>
                 <button className="btn btn-success" onClick={handleCopy} style={{ backgroundColor: '#0c0c0c', color: 'white' }}>
-                  {copiedQuote === randomQuote.text ? "Copied!" : "Copy"}
+                  {copiedQuote === "Copied!" ? "Copied!" : "Copy"}
                 </button>
               </div>
             </div>
