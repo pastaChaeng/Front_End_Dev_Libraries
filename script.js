@@ -38,7 +38,7 @@ function App() {
     <div className="container pt-5">
       <div className="jumbotron">
         <div className="card">
-          <div className="card-header">Inspirational Quotes</div>
+          <div className="card-header bg-dark text-white">Inspirational Quotes</div>
           <div className="card-body d-flex flex-row justify-content-between align-items-center">
             {randomQuote ? (
               <>
